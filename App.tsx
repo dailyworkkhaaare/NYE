@@ -79,7 +79,7 @@ const App: React.FC = () => {
             .on(
                 'postgres_changes',
                 { event: '*', schema: 'public', table: 'events' },
-                (payload) => {
+                (payload: any) => {
                     if (payload.eventType === 'UPDATE') {
                         const updated = payload.new as ShowEvent;
                         setEvents(prev => sortEvents(prev.map(e => e.id === updated.id ? updated : e)));
@@ -92,7 +92,7 @@ const App: React.FC = () => {
                     }
                 }
             )
-            .subscribe((status) => {
+            .subscribe((status: string) => {
                 setIsOnline(status === 'SUBSCRIBED');
             });
 
