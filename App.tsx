@@ -55,6 +55,7 @@ const App: React.FC = () => {
             if (data && data.length > 0) {
                 setEvents(sortEvents(data as ShowEvent[]));
             } else {
+                // Only seed if the table is verified empty
                 const { error: seedError } = await supabase
                     .from('events')
                     .insert(INITIAL_DATA);
@@ -79,7 +80,7 @@ const App: React.FC = () => {
             .on(
                 'postgres_changes',
                 { event: '*', schema: 'public', table: 'events' },
-                (payload: any) => {
+                (payload: { eventType: string; new: any; old: any }) => {
                     if (payload.eventType === 'UPDATE') {
                         const updated = payload.new as ShowEvent;
                         setEvents(prev => sortEvents(prev.map(e => e.id === updated.id ? updated : e)));
@@ -109,29 +110,22 @@ const App: React.FC = () => {
     const handleUpdateEvent = async (updatedEvent: ShowEvent) => {
         const originalEvents = [...events];
         
-        // Handle insert for new items, update for existing
-        const isNew = !events.find(e => e.id === updatedEvent.id);
-        
         // Optimistic update
-        if (isNew) {
-            setEvents(prev => sortEvents([...prev, updatedEvent]));
-        } else {
-            setEvents(prev => sortEvents(prev.map(e => e.id === updatedEvent.id ? updatedEvent : e)));
-        }
+        setEvents(prev => {
+            const exists = prev.some(e => e.id === updatedEvent.id);
+            if (exists) {
+                return sortEvents(prev.map(e => e.id === updatedEvent.id ? updatedEvent : e));
+            }
+            return sortEvents([...prev, updatedEvent]);
+        });
 
         try {
-            if (isNew) {
-                const { error: insertError } = await supabase
-                    .from('events')
-                    .insert(updatedEvent);
-                if (insertError) throw insertError;
-            } else {
-                const { error: updateError } = await supabase
-                    .from('events')
-                    .update(updatedEvent)
-                    .eq('id', updatedEvent.id);
-                if (updateError) throw updateError;
-            }
+            // Using upsert ensures both new records and existing updates are handled correctly
+            const { error: upsertError } = await supabase
+                .from('events')
+                .upsert(updatedEvent);
+            
+            if (upsertError) throw upsertError;
         } catch (err: any) {
             console.error('Save failed:', err);
             setError('Cloud save failed. Reverting...');
@@ -164,7 +158,7 @@ const App: React.FC = () => {
         const newId = crypto.randomUUID();
         const newEvent: ShowEvent = {
             id: newId,
-            startTime: '7:00 PM',
+            startTime: '7:15 PM',
             endTime: '7:30 PM',
             title: 'New Segment',
             description: 'Enter description here...',
@@ -172,10 +166,9 @@ const App: React.FC = () => {
             type: EventType.COMEDY,
             isHighlight: false
         };
-        // We don't save to DB yet, just local state. 
-        // EventCard will handle the initial save or auto-deletion if canceled.
+        // Add locally so EventCard can handle the initial edit state
         setEvents(prev => [newEvent, ...prev]);
-        setFilter(EventType.ALL); // Switch to 'All' to ensure the new segment is visible
+        setFilter(EventType.ALL);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
@@ -289,7 +282,7 @@ const App: React.FC = () => {
                 <div className="mt-8 p-4 bg-[#003049]/10 rounded-lg border border-[#003049]/20 flex gap-3 text-[#003049]">
                     <AlertCircle className="w-5 h-5 text-[#C1121F] flex-shrink-0" />
                     <p className="text-xs font-['Switzer'] leading-relaxed">
-                        <strong>Cloud Sync:</strong> Use the "Add" button to insert new segments. Any edits or deletions are broadcast to all users immediately.
+                        <strong>Cloud Sync:</strong> Edits are saved and broadcast instantly. New segments are sorted by start time.
                     </p>
                 </div>
             </main>
