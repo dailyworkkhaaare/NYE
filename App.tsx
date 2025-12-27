@@ -182,16 +182,16 @@ const App: React.FC = () => {
     const categories = Object.values(EventType);
 
     return (
-        <div className="min-h-screen bg-[#FDF0D5] text-[#003049] pb-20 font-inter">
+        <div className="min-h-screen bg-[#FDF0D5] text-[#003049] pb-20">
             <header className="sticky top-0 z-50 bg-[#003049] shadow-md">
                 <div className="max-w-md mx-auto px-4 py-4">
                     <div className="flex justify-between items-center mb-4">
                         <div>
-                            <h1 className="text-2xl font-bold text-white font-display tracking-wide">
+                            <h1 className="text-2xl font-bold text-white tracking-wide">
                                 Khaas Re Live
                             </h1>
                             <div className="flex items-center gap-3">
-                                <p className="text-xs text-[#FDF0D5]/80 flex items-center gap-1 font-inter">
+                                <p className="text-xs text-[#FDF0D5]/80 flex items-center gap-1">
                                     <Calendar className="w-3 h-3" /> 31st Dec • Show Flow
                                 </p>
                                 <div className={`flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-tighter transition-colors ${isOnline ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
@@ -203,7 +203,7 @@ const App: React.FC = () => {
                         <div className="flex gap-2">
                             <button 
                                 onClick={handleAddSegment}
-                                className="bg-[#C1121F] text-white p-2 rounded-lg shadow-lg hover:bg-red-700 transition-all active:scale-95 flex items-center gap-1 text-xs font-bold font-inter"
+                                className="bg-[#C1121F] text-white p-2 rounded-lg shadow-lg hover:bg-red-700 transition-all active:scale-95 flex items-center gap-1 text-xs font-bold"
                             >
                                 <Plus className="w-4 h-4" /> Add
                             </button>
@@ -223,7 +223,7 @@ const App: React.FC = () => {
                                 role="tab"
                                 aria-selected={filter === cat}
                                 onClick={() => setFilter(cat)}
-                                className={`whitespace-nowrap px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 border outline-none font-inter
+                                className={`whitespace-nowrap px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 border outline-none
                                     ${filter === cat 
                                         ? 'bg-[#C1121F] border-[#C1121F] text-white shadow-sm scale-105' 
                                         : 'bg-white/10 border-white/20 text-[#FDF0D5] hover:bg-white/20'
@@ -237,7 +237,7 @@ const App: React.FC = () => {
             </header>
 
             {error && (
-                <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[100] bg-[#C1121F] text-white px-4 py-2 rounded-lg shadow-xl flex items-center gap-2 animate-bounce font-inter text-sm">
+                <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[100] bg-[#C1121F] text-white px-4 py-2 rounded-lg shadow-xl flex items-center gap-2 animate-bounce text-sm">
                     <AlertCircle className="w-4 h-4" />
                     {error}
                 </div>
@@ -248,7 +248,7 @@ const App: React.FC = () => {
                     {isLoading && events.length === 0 ? (
                         <div className="flex flex-col items-center justify-center py-20 text-[#003049]/40">
                             <Loader2 className="w-10 h-10 animate-spin mb-4 text-[#C1121F]" />
-                            <p className="font-inter text-sm font-medium">Syncing Cloud Database...</p>
+                            <p className="text-sm font-medium">Syncing Cloud Database...</p>
                         </div>
                     ) : filteredEvents.length > 0 ? (
                         filteredEvents.map((event, index) => (
@@ -267,14 +267,14 @@ const App: React.FC = () => {
                             className="text-center py-20 text-[#003049]/60 outline-none"
                         >
                             <Filter className="w-12 h-12 mx-auto mb-3 opacity-30" />
-                            <p className="font-inter">No Segments Found.</p>
+                            <p>No Segments Found.</p>
                         </div>
                     )}
                 </div>
 
                 <div className="mt-8 p-4 bg-[#003049]/10 rounded-lg border border-[#003049]/20 flex gap-3 text-[#003049]">
                     <AlertCircle className="w-5 h-5 text-[#C1121F] flex-shrink-0" />
-                    <p className="text-xs font-inter leading-relaxed">
+                    <p className="text-xs leading-relaxed">
                         <strong>Cloud Sync:</strong> Edits are saved and broadcast instantly. New segments are sorted by start time.
                     </p>
                 </div>

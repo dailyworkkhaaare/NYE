@@ -145,7 +145,7 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(({ event, on
                 
                 <div className="rounded-xl p-5 border-2 bg-white border-[#C1121F] shadow-lg animate-in fade-in zoom-in duration-200">
                     <div className="flex justify-between items-center mb-4 border-b border-gray-100 pb-2">
-                        <span className="font-bold text-[#C1121F] text-xs uppercase tracking-widest font-inter">
+                        <span className="font-bold text-[#C1121F] text-xs uppercase tracking-widest">
                             {event.title === 'New Segment' ? 'Create New Segment' : 'Editing Segment'}
                         </span>
                         <div className="flex gap-1">
@@ -164,26 +164,26 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(({ event, on
                     <div className="space-y-4">
                         <div className="grid grid-cols-2 gap-3">
                             <div>
-                                <label className="text-[10px] font-bold text-[#003049]/60 uppercase mb-1 block font-inter">Start Time</label>
+                                <label className="text-[10px] font-bold text-[#003049]/60 uppercase mb-1 block">Start Time</label>
                                 <input 
                                     type="text" 
                                     autoComplete="off"
                                     autoCorrect="off"
                                     spellCheck="false"
-                                    className="w-full text-sm font-medium border-b border-gray-200 focus:border-[#C1121F] outline-none py-1 transition-colors font-inter"
+                                    className="w-full text-sm font-medium border-b border-gray-200 focus:border-[#C1121F] outline-none py-1 transition-colors"
                                     value={startTime}
                                     onChange={e => setStartTime(e.target.value)}
                                     placeholder="7:00 PM"
                                 />
                             </div>
                             <div>
-                                <label className="text-[10px] font-bold text-[#003049]/60 uppercase mb-1 block font-inter">End Time</label>
+                                <label className="text-[10px] font-bold text-[#003049]/60 uppercase mb-1 block">End Time</label>
                                 <input 
                                     type="text" 
                                     autoComplete="off"
                                     autoCorrect="off"
                                     spellCheck="false"
-                                    className="w-full text-sm font-medium border-b border-gray-200 focus:border-[#C1121F] outline-none py-1 transition-colors font-inter"
+                                    className="w-full text-sm font-medium border-b border-gray-200 focus:border-[#C1121F] outline-none py-1 transition-colors"
                                     value={endTime}
                                     onChange={e => setEndTime(e.target.value)}
                                     placeholder="8:00 PM"
@@ -192,13 +192,13 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(({ event, on
                         </div>
 
                         <div>
-                            <label className="text-[10px] font-bold text-[#003049]/60 uppercase mb-1 block font-inter">Title</label>
+                            <label className="text-[10px] font-bold text-[#003049]/60 uppercase mb-1 block">Title</label>
                             <input 
                                 type="text" 
                                 autoComplete="off"
                                 autoCorrect="off"
                                 spellCheck="false"
-                                className="w-full text-lg font-bold border-b border-gray-200 focus:border-[#C1121F] outline-none py-1 transition-colors font-display"
+                                className="w-full text-lg font-bold border-b border-gray-200 focus:border-[#C1121F] outline-none py-1 transition-colors"
                                 value={title}
                                 onChange={e => setTitle(e.target.value)}
                                 placeholder="Segment Name"
@@ -207,9 +207,9 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(({ event, on
 
                         <div className="grid grid-cols-2 gap-3">
                             <div>
-                                <label className="text-[10px] font-bold text-[#003049]/60 uppercase mb-1 block font-inter">Category</label>
+                                <label className="text-[10px] font-bold text-[#003049]/60 uppercase mb-1 block">Category</label>
                                 <select 
-                                    className="w-full text-sm border-b border-gray-200 focus:border-[#C1121F] outline-none py-1 bg-transparent font-inter"
+                                    className="w-full text-sm border-b border-gray-200 focus:border-[#C1121F] outline-none py-1 bg-transparent"
                                     value={type}
                                     onChange={e => setType(e.target.value as EventType)}
                                 >
@@ -226,19 +226,19 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(({ event, on
                                         onChange={e => setIsHighlight(e.target.checked)}
                                         className="w-4 h-4 rounded border-gray-300 text-[#C1121F] focus:ring-[#C1121F]"
                                     />
-                                    <span className="text-xs font-medium font-inter">Highlight</span>
+                                    <span className="text-xs font-medium">Highlight</span>
                                 </label>
                             </div>
                         </div>
 
                         <div>
-                            <label className="text-[10px] font-bold text-[#003049]/60 uppercase mb-1 block font-inter">Subtitle (Marathi Info)</label>
+                            <label className="text-[10px] font-bold text-[#003049]/60 uppercase mb-1 block">Subtitle (Marathi Info)</label>
                             <input 
                                 type="text" 
                                 autoComplete="off"
                                 autoCorrect="off"
                                 spellCheck="false"
-                                className="w-full text-sm border-b border-gray-200 focus:border-[#C1121F] outline-none py-1 text-[#C1121F] font-marathi"
+                                className="w-full text-sm border-b border-gray-200 focus:border-[#C1121F] outline-none py-1 text-[#C1121F]"
                                 value={subtitle}
                                 onChange={e => setSubtitle(e.target.value)}
                                 placeholder="Secondary text..."
@@ -246,12 +246,12 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(({ event, on
                         </div>
 
                         <div>
-                            <label className="text-[10px] font-bold text-[#003049]/60 uppercase mb-1 block font-inter">Description</label>
+                            <label className="text-[10px] font-bold text-[#003049]/60 uppercase mb-1 block">Description</label>
                             <textarea 
                                 autoComplete="off"
                                 autoCorrect="off"
                                 spellCheck="false"
-                                className="w-full text-sm border-b border-gray-200 focus:border-[#C1121F] outline-none py-1 resize-none bg-transparent font-marathi"
+                                className="w-full text-sm border-b border-gray-200 focus:border-[#C1121F] outline-none py-1 resize-none bg-transparent"
                                 rows={2}
                                 value={description}
                                 onChange={e => setDescription(e.target.value)}
@@ -260,13 +260,13 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(({ event, on
                         </div>
 
                         <div>
-                            <label className="text-[10px] font-bold text-[#003049]/60 uppercase mb-1 block font-inter">Performers (Comma separated)</label>
+                            <label className="text-[10px] font-bold text-[#003049]/60 uppercase mb-1 block">Performers (Comma separated)</label>
                             <input 
                                 type="text" 
                                 autoComplete="off"
                                 autoCorrect="off"
                                 spellCheck="false"
-                                className="w-full text-sm border-b border-gray-200 focus:border-[#C1121F] outline-none py-1 font-inter"
+                                className="w-full text-sm border-b border-gray-200 focus:border-[#C1121F] outline-none py-1"
                                 value={artistsRaw}
                                 onChange={e => setArtistsRaw(e.target.value)}
                                 placeholder="Name 1, Name 2..."
@@ -276,7 +276,7 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(({ event, on
                         <div className="flex gap-2 pt-2">
                             <button 
                                 onClick={handleSave}
-                                className="flex-1 bg-[#003049] text-white py-3 rounded-lg text-sm font-bold flex items-center justify-center gap-2 hover:bg-[#003049]/90 font-inter transition-all shadow-md active:scale-95"
+                                className="flex-1 bg-[#003049] text-white py-3 rounded-lg text-sm font-bold flex items-center justify-center gap-2 hover:bg-[#003049]/90 transition-all shadow-md active:scale-95"
                             >
                                 <Check className="w-4 h-4" /> {event.title === 'New Segment' ? 'Add to Timeline' : 'Save Changes'}
                             </button>
@@ -289,11 +289,11 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(({ event, on
                         <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
                             <AlertTriangle className="w-6 h-6 text-red-600" />
                         </div>
-                        <h4 className="font-bold text-[#003049] mb-2 font-display">Delete this segment?</h4>
-                        <p className="text-sm text-[#003049]/60 mb-6 font-inter">This will remove it from all users' schedules in real-time.</p>
+                        <h4 className="font-bold text-[#003049] mb-2">Delete this segment?</h4>
+                        <p className="text-sm text-[#003049]/60 mb-6">This will remove it from all users' schedules in real-time.</p>
                         <div className="flex gap-3 w-full">
-                            <button onClick={() => setShowDeleteConfirm(false)} className="flex-1 px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium font-inter hover:bg-gray-50">Cancel</button>
-                            <button onClick={() => onDelete(event.id)} className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-bold font-inter hover:bg-red-700 shadow-md">Yes, Delete</button>
+                            <button onClick={() => setShowDeleteConfirm(false)} className="flex-1 px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium hover:bg-gray-50">Cancel</button>
+                            <button onClick={() => onDelete(event.id)} className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-bold hover:bg-red-700 shadow-md">Yes, Delete</button>
                         </div>
                     </div>
                 )}
@@ -315,44 +315,44 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(({ event, on
                 <div className="flex justify-between items-start mb-2 pr-20">
                     <div className="flex items-center flex-wrap gap-2 text-sm text-[#780000] font-bold">
                         <Clock className="w-3 h-3" />
-                        <span className="tracking-wide font-inter">
+                        <span className="tracking-wide">
                             {formatTime(event.startTime)} – {formatTime(event.endTime)}
                         </span>
-                        {duration && <span className="text-[10px] font-medium text-[#003049]/50 bg-[#003049]/5 px-1.5 py-0.5 rounded font-inter ml-1">{duration}</span>}
+                        {duration && <span className="text-[10px] font-medium text-[#003049]/50 bg-[#003049]/5 px-1.5 py-0.5 rounded ml-1">{duration}</span>}
                     </div>
-                    <div className="px-2 py-1 rounded-md bg-[#003049]/10 text-[#003049] text-xs flex items-center gap-1 font-semibold font-inter">
+                    <div className="px-2 py-1 rounded-md bg-[#003049]/10 text-[#003049] text-xs flex items-center gap-1 font-semibold">
                         {getIconForType(event.type)}
                         {event.type}
                     </div>
                 </div>
 
-                <h3 className={`text-xl font-bold text-[#003049] mb-1 leading-tight font-display tracking-tight ${event.isHighlight ? 'text-[#C1121F]' : ''}`}>
+                <h3 className={`text-xl font-bold text-[#003049] mb-1 leading-tight tracking-tight ${event.isHighlight ? 'text-[#C1121F]' : ''}`}>
                     {event.title}
                     {event.isHighlight && <Tag className="inline ml-2 w-4 h-4" />}
                 </h3>
                 
-                {event.subtitle && <p className="text-[#C1121F] font-medium text-sm mb-2 font-marathi">{event.subtitle}</p>}
+                {event.subtitle && <p className="text-[#C1121F] font-medium text-sm mb-2">{event.subtitle}</p>}
                 
-                <p className="text-[#003049]/80 text-sm mb-4 leading-relaxed font-marathi">
+                <p className="text-[#003049]/80 text-sm mb-4 leading-relaxed">
                     {event.description}
                 </p>
 
                 <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-[#003049]/10">
                     <div className="w-full mb-1">
-                        <div className="group/tooltip relative inline-flex items-center gap-2 text-xs text-[#003049]/60 font-inter cursor-help w-fit">
+                        <div className="group/tooltip relative inline-flex items-center gap-2 text-xs text-[#003049]/60 cursor-help w-fit">
                             <Users className="w-3 h-3" />
                             <span className="underline decoration-dotted underline-offset-2">Performers:</span>
                             <div className="absolute bottom-full left-0 mb-2 hidden group-hover/tooltip:block min-w-[180px] max-w-[240px] bg-[#003049] text-[#FDF0D5] text-xs rounded-lg shadow-xl z-20 p-3 pointer-events-none">
-                                <p className="font-bold border-b border-[#FDF0D5]/20 pb-1 mb-1 font-display text-[#FDF0D5]">Full Lineup</p>
-                                <p className="font-marathi leading-relaxed text-[#FDF0D5]/90">{event.artists.length > 0 ? event.artists.join(', ') : 'None'}</p>
+                                <p className="font-bold border-b border-[#FDF0D5]/20 pb-1 mb-1 text-[#FDF0D5]">Full Lineup</p>
+                                <p className="leading-relaxed text-[#FDF0D5]/90">{event.artists.length > 0 ? event.artists.join(', ') : 'None'}</p>
                                 <div className="absolute top-full left-5 -translate-x-1/2 border-4 border-transparent border-t-[#003049]"></div>
                             </div>
                         </div>
                     </div>
                     {event.artists.length > 0 ? event.artists.map((artist, idx) => (
-                        <span key={idx} className="px-2 py-1 rounded bg-[#FDF0D5] text-[#003049] text-xs font-medium border border-[#003049]/10 font-inter">{artist}</span>
+                        <span key={idx} className="px-2 py-1 rounded bg-[#FDF0D5] text-[#003049] text-xs font-medium border border-[#003049]/10">{artist}</span>
                     )) : (
-                        <span className="text-[10px] text-[#003049]/40 font-inter">No performers listed</span>
+                        <span className="text-[10px] text-[#003049]/40">No performers listed</span>
                     )}
                 </div>
 
@@ -361,10 +361,10 @@ export const EventCard = forwardRef<HTMLDivElement, EventCardProps>(({ event, on
                         <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
                             <AlertTriangle className="w-6 h-6 text-red-600" />
                         </div>
-                        <h4 className="font-bold text-[#003049] mb-2 font-display">Delete segment?</h4>
+                        <h4 className="font-bold text-[#003049] mb-2">Delete segment?</h4>
                         <div className="flex gap-3 w-full max-w-[240px]">
-                            <button onClick={() => setShowDeleteConfirm(false)} className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-xs font-medium font-inter hover:bg-gray-50">Back</button>
-                            <button onClick={() => onDelete(event.id)} className="flex-1 px-3 py-2 bg-red-600 text-white rounded-lg text-xs font-bold font-inter hover:bg-red-700 shadow-sm">Delete</button>
+                            <button onClick={() => setShowDeleteConfirm(false)} className="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-xs font-medium hover:bg-gray-50">Back</button>
+                            <button onClick={() => onDelete(event.id)} className="flex-1 px-3 py-2 bg-red-600 text-white rounded-lg text-xs font-bold hover:bg-red-700 shadow-sm">Delete</button>
                         </div>
                     </div>
                 )}
